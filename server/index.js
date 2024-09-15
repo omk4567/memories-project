@@ -3,7 +3,8 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';  
 import cors from 'cors';      
 import dotenv from 'dotenv';  
-import postRoutes from './routes/posts.js'
+import postRoutes from './routes/posts.js'; 
+import userRoutes from './routes/users.js'
 
 const app = express();      
 dotenv.config();  
@@ -12,7 +13,8 @@ app.use(bodyParser.json({limit: "50mb", extended: "true"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: "true"}));   
 app.use(cors());   
 
-app.use('/posts', postRoutes);
+app.use('/posts', postRoutes);   
+app.use('/user', userRoutes); 
 app.get('/', (req, res) => {
     res.send('Hello to Memories API');   
 })  
