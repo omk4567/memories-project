@@ -1,4 +1,5 @@
-import {jwtDecode} from 'jwt-decode';  
+import {jwtDecode} from 'jwt-decode'; 
+import jwt from "jsonwebtoken";  
 
 
 // need of middlewares 
@@ -15,8 +16,8 @@ const auth = async (req, res, next) => {
         if(token && isCustomAuth){
             decodedData = jwt.verify(token, 'test');     
 
-            req.userId = decodedData?.id;                   
-        } 
+            req.userId = decodedData?.id;                             
+        }        
         else{
             decodedData = jwtDecode(token);                           
         
