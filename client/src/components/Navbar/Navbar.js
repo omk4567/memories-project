@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {Link, useNavigate, useLocation} from 'react-router-dom';  
 import { AppBar, Avatar, Typography, Toolbar, Button } from '@material-ui/core';     
 import useStyles from './styles';  
-import memories from '../../images/memories.png'; 
+import memoriesLogo from '../../images/memories-Logo.png';       
+import memoriesText from '../../images/memories-Text.png';  
 import * as actionType from '../../constants/actionTypes';     
 import { useDispatch } from 'react-redux';
 import {jwtDecode} from 'jwt-decode';  
@@ -12,10 +13,8 @@ const Navbar = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile'))); 
     const navigate = useNavigate();  
     const dispatch = useDispatch(); 
-    const location = useLocation(); 
+    const location = useLocation();         
     
-    console.log(user);        
-
     const logout = () => {
         dispatch({type: actionType.LOGOUT}); 
 
@@ -38,12 +37,10 @@ const Navbar = () => {
 
     return (
     <AppBar className={classes.appBar} position="static" color="inherit">   
-    <div className={classes.brandContainer}>
-        <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">
-            LifeSnap
-        </Typography>    
-        <img className={classes.image} src={memories} alt="memories" height="60"/>
-    </div>   
+    <Link to="/" className={classes.brandContainer}>
+        <img component={Link} to="/" src={memoriesText} alt="icon" height="45px" />
+        <img className={classes.image} src={memoriesLogo} alt="icon" height="40px" />
+    </Link>   
     <Toolbar className={classes.toolbar}>   
          {user?.result ? (
           <div className={classes.profile}>

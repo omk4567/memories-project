@@ -62,7 +62,6 @@ const Auth = () => {
   }    
 
   const googleFailure = (error) => {
-    console.log('Google Sign-In failed with error:', error);
     console.error('Full error details:', error);  // Log the full error for better understanding
   }
 
